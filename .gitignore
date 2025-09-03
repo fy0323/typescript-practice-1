@@ -1,3 +1,5 @@
 /node_modules
 /logs
 /dist
+/password-generator/node_modules
+/password-generator/dist
