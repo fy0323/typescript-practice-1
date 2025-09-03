@@ -15,13 +15,23 @@ type JobHistory = {
 
 type ProfileWithHistory = Profile & JobHistory
 
-class DataHandler<T> {
+class DataHandler<T extends {id: number}> {
   private data: T[] = [];
   addItem(item: T): void {
     this.data.push(item);
   }
   getItemById(id: number): T | undefined {
-    return this.data[id];
+    return this.data.find(item => item.id === id);
+  }
+}
+
+function showNameOrMessage(id: number, handler: DataHandler<Profile>){
+  const user = handler.getItemById(id);
+
+  if (user) {
+    console.log(`ID ${id} の名前は ${user.name} です。`);
+  } else {
+    console.log(`ID ${id} は見つかりませんでした。`);
   }
 }
 
@@ -46,9 +56,6 @@ const anotherProfile: Profile = {
 dataHandler.addItem(myProfile);
 dataHandler.addItem(anotherProfile);
 
-// TODO: dataHandlerの配列インデックスでなくProfile IDを指定して名前を表示できるようにする
-// TODO: IDが存在するときは名前を、存在しないときは"${id}は存在しません"という文字列を返す
-console.log(dataHandler.getItemById(0)?.name)
-console.log(dataHandler.getItemById(1)?.name)
-console.log(dataHandler.getItemById(99)?.name)
-
+showNameOrMessage(1, dataHandler);
+showNameOrMessage(2, dataHandler);
+showNameOrMessage(99, dataHandler);
