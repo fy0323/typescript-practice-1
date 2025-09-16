@@ -1,8 +1,13 @@
-function Profile(){
+interface UserInfo {
+  name: string;
+  bio: string;
+}
+
+function Profile({ name, bio }: UserInfo){
   return (
     <div>
-      <h1>私の名前は fy0323 です</h1>
-      <p>インフラエンジニアです。Reactを勉強中です</p>
+      <h1>私の名前は{name}です</h1>
+      <p>{bio}</p>
     </div>
   )
 }
