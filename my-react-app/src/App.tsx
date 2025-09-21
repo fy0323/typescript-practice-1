@@ -1,6 +1,7 @@
 //import { useState } from 'react'
 import Profile from './components/Profile.tsx'
 import Counter from './components/Counter.tsx'
+import TodoList from './components/TodoList.tsx'
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -10,6 +11,7 @@ function App() {
       <Profile name="山田太郎" bio="フロントエンドエンジニア"/>
       <Profile name="鈴木花子" bio="バックエンドエンジニア"/>
       <Counter />
+      <TodoList />
     </div>
   )
 }
